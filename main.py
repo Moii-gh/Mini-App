@@ -5,27 +5,8 @@ import logging
 from telebot import TeleBot, logger
 import soundfile as sf
 
-from requests import post
-class Completion:
-    @staticmethod
-    def create(prompt: str) -> str:
-        response = post(
-         url="https://api.binjie.fun/api/generateStream",
-         headers={
-          "origin": "https://chat.jinshutuan.com",
-          "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.79 Safari/537.36",
-         },
-         json={
-          "prompt": prompt,
-          "withoutContext": True,
-          "stream": True,
-         },
-        )
-        response.encoding = "utf-8"
-        return response.text
 
-prompt = "Перескажи текст"
-Tg_Key = "6544091551:AAFiPC-KEmRB9zHF3d6R4cHMcDuBW87Vo74"
+Tg_Key = " "
 Voice_Lang = "ru-RU"
 max_message_size = 50 * 1024 * 1024
 max_message_duration = 120
@@ -46,9 +27,6 @@ def echo_voice(message):
     file_path = download_file(file_url)
     convert_to_pcm16(file_path)
     text = proggres_audio_file("new.wav")
-    user_message = prompt + text if text else ""
-    gpt_answer = Completion().create(user_message)
-    bot.reply_to(message, gpt_answer)
 
     if not text:
         return bot.reply_to(message, "Не понял что вы сказали")
