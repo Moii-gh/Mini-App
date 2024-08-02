@@ -7,7 +7,7 @@ from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
 
-API_TOKEN = '6544091551:AAFiPC-KEmRB9zHF3d6R4cHMcDuBW87Vo74'
+API_TOKEN = ''
 
 logging.basicConfig(level=logging.INFO)
 
